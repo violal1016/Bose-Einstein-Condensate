@@ -1,0 +1,42 @@
+gap> # generate group S4xZ2xS4
+
+gap> # first generate group S4xZ2
+gap> s4:=SymmetricGroup(4);
+gap> z2:=SymmetricGroup(2);
+gap> g1:=DirectProduct(s4,z2);
+
+gap> # find all conjugacy classes subgroups of S4xZ2 and rename them 
+gap> ccs_g1:=ConjugacyClassesSubgroups(g1);
+gap> names_ccs_g1:=["Z1","Z2","D1z","D1","Z2m","Z1p","Z3","V4","D2z","Z4","D2","D1p","D2d","V4m","Z2p","Z4d","D3","D3z","Z3p","V4p","D4z","D4d","Z4p","D4","D2p","D4hd","D3p","A4","D4p","A4p","S4","S4m","S4p"];
+gap> ListA(ccs_g1,names_ccs_g1,SetAbbrv);
+
+gap> # generate group S4xZ2Xs4
+
+gap> # also find all conjugacy classes subgroups of S4 and rename them 
+gap> g2:=SymmetricGroup(4);
+gap> ccs_g2:=ConjugacyClassesSubgroups(g2);
+gap> names_ccs_g2:=["Z1","Z2","D1","Z3","V4","D2","Z4","D3","D4","A4","S4"];
+gap> ListA(ccs_g2,names_ccs_g2,SetAbbrv);
+
+
+gap> G:=DirectProduct(g1,g2);
+
+gap> # find all conjugacy classes subgroups of S4xZ2xS4 and use “AmalgamationSymbol” to rename them 
+gap> ccs_G:=ConjugacyClassesSubgroups(G);
+gap> names_ccs_G:=List(ccs_G,AmalgamationSymbol);
+gap> ListA(ccs_G,names_ccs_G,SetAbbrv);
+
+
+gap> # Create Charactertable of S4xZ2xS4
+gap> tbl:=CharacterTable(G);
+gap> Display(tbl);
+
+gap> # According to character table above, find maximal orbit types and basic degree to the corresponding irreducible representations.
+gap> Maximal48:=MaximalOrbitTypes(Irr(G)[48]);
+gap> basicdegree48:=BasicDegree(Irr(G)[48]);
+
+gap> # create lattice of orbit types
+gap> dotfile:=StringFormatted("S4xZ2xS4_48.dot");
+gap> lat_orbittype_48:=LatticeOrbitTypes(Irr(G)[48]);
+gap> DotFileLattice(lat_orbittype_48,dotfile);
+
