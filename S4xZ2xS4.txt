@@ -1,38 +1,39 @@
-gap> LoadPackage("EquiDeg");
+LoadPackage("EquiDeg");
 
-gap> # first generate group S4xZ2
-gap> s4:=SymmetricGroup(4);
-gap> z2:=SymmetricGroup(2);
-gap> g1:=DirectProduct(s4,z2);
+# first generate group S4xZ2
+s4:=SymmetricGroup(4);
+z2:=SymmetricGroup(2);
+g1:=DirectProduct(s4,z2);
 
-gap> # find all conjugacy classes subgroups of S4xZ2 and rename them 
-gap> ccs_g1:=ConjugacyClassesSubgroups(g1);
-gap> names_ccs_g1:=["Z1","Z2","D1z","D1","Z2m","Z1p","Z3","V4","D2z","Z4","D2","D1p","D2d","V4m","Z2p","Z4d","D3","D3z","Z3p","V4p","D4z","D4d","Z4p","D4","D2p","D4hd","D3p","A4","D4p","A4p","S4","S4m","S4p"];
-gap> ListA(ccs_g1,names_ccs_g1,SetAbbrv);
+# find all conjugacy classes subgroups of S4xZ2 and rename them 
+ccs_g1:=ConjugacyClassesSubgroups(g1);
+names_ccs_g1:=["Z1","Z2","D1z","D1","Z2m","Z1p","Z3","V4","D2z","Z4","D2","D1p","D2d","V4m","Z2p","Z4d","D3","D3z","Z3p","V4p","D4z","D4d","Z4p","D4","D2p","D4hd","D3p","A4","D4p","A4p","S4","S4m","S4p"];
+ListA(ccs_g1,names_ccs_g1,SetAbbrv);
 
+# generate group S4xZ2Xs4
+# also find all conjugacy classes subgroups of S4 and rename them 
+g2:=SymmetricGroup(4);
+ccs_g2:=ConjugacyClassesSubgroups(g2);
+names_ccs_g2:=["Z1","Z2","D1","Z3","V4","D2","Z4","D3","D4","A4","S4"];
+ListA(ccs_g2,names_ccs_g2,SetAbbrv);
 
-gap> # generate group S4xZ2Xs4
-gap> # also find all conjugacy classes subgroups of S4 and rename them 
-gap> g2:=SymmetricGroup(4);
-gap> ccs_g2:=ConjugacyClassesSubgroups(g2);
-gap> names_ccs_g2:=["Z1","Z2","D1","Z3","V4","D2","Z4","D3","D4","A4","S4"];
-gap> ListA(ccs_g2,names_ccs_g2,SetAbbrv);
+G:=DirectProduct(g1,g2);
 
+# find all conjugacy classes subgroups of S4xZ2xS4 and use “AmalgamationSymbol” to rename them 
+ccs_G:=ConjugacyClassesSubgroups(G);
+names_ccs_G:=List(ccs_G,AmalgamationSymbol);
+ListA(ccs_G,names_ccs_G,SetAbbrv);
 
-gap> G:=DirectProduct(g1,g2);
+# find order of all conjugacy classes of S4xZ2xS4 in GAP
+ord:=ConjugacyClasses(G);
 
-gap> # find all conjugacy classes subgroups of S4xZ2xS4 and use “AmalgamationSymbol” to rename them 
-gap> ccs_G:=ConjugacyClassesSubgroups(G);
-gap> names_ccs_G:=List(ccs_G,AmalgamationSymbol);
-gap> ListA(ccs_G,names_ccs_G,SetAbbrv);
+# Create Charactertable of S4xZ2xS4
+tbl:=CharacterTable(G);
+Display(tbl);
 
-gap> # Create Charactertable of S4xZ2xS4
-gap> tbl:=CharacterTable(G);
-gap> Display(tbl);
-
-gap> # Find maximal orbit types and basic degree to the corresponding irreducible representations (Refer to the README file for the explanation on why X.44 was selected).
-gap> Maximal44:=MaximalOrbitTypes(Irr(G)[44]);
-gap> basicdegree44:=BasicDegree(Irr(G)[44]);
+# Find maximal orbit types and basic degree to the corresponding irreducible representations (Refer to the README file for the explanation on why X.44 was selected).
+Maximal44:=MaximalOrbitTypes(Irr(G)[44]);
+basicdegree44:=BasicDegree(Irr(G)[44]);
 
 
 
