@@ -2,7 +2,7 @@
 This project computes the basic degree of group $S_4^p \times S_4$, where $S_4^p:=S_4\times Z_2$, using GAP with the additional package "EquiDeg".
 ## Code
 The code for this project is contained in the file `S4xZ2xS4.txt`. Readers can enter it into GAP and run the calculations.
-<!--## Selection of appropriate $S_4^p\times S_4$ irreducible representation: 
+## Selection of appropriate $S_4^p\times S_4$ irreducible representation: 
 The following tables outline the process for selecting the appropriate $S_4^p \times S_4$ irreducible representation, where the generators of the group are given by $<(1,2,3,4),(1,2),(5,6),(7,8,9,10),(7,8)>$
 <br>
 <br>
@@ -61,7 +61,7 @@ Given the conjugacy classes of $S_4^p \times S_4$ in the same order as presented
 
 |(5,6)(7,9,8,10) | (1,3)(2,4)(5,6)(7,9,8,10) | (2,4,3)(5,6)(7,9,8,10) | (3,4)(5,6)(7,9,8,10) | (1,3,2,4)(5,6)(7,9,8,10)|
 |:-------------|:-------------|:-------------|:-------------|:-------------|
-|3 | -1 | 0 | -1 | 1 | -->
+|3 | -1 | 0 | -1 | 1 | 
 
 ## License and Credits
 The "EquiDeg" package by Haoping Wu (https://github.com/psistwu/equideg) is used in this project. Please refer to the package documentation and license for details on usage and distribution.
