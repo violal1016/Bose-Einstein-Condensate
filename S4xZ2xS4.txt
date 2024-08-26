@@ -35,5 +35,26 @@ Display(tbl);
 Maximal44:=MaximalOrbitTypes(Irr(G)[44]);
 basicdegree44:=BasicDegree(Irr(G)[44]);
 
+# Calculate order of each maximal isotropy group mentioned above
+# Creat a list to store subgroups and their corresponding amalgamated groups.
+pairs:=[];
+for i in [1..Length(ccs_G)] do
+    Add(pairs, [ccs_G[i], names_ccs_G[i]]);
+od;
+
+# Loop over the maximal orbit types and find order of each maximal isotropy group
+for i in [1..Length(Maximal44)] do
+    originalSubgroup := Maximal44[i];
+    renamedGroup := "";
+    for pair in pairs do
+        if originalSubgroup = pair[1] then
+           renamedGroup := pair[2];
+           break;
+        fi;
+    od;
+    subgroup := Representative(originalSubgroup);
+    order := Size(subgroup);
+    Print("Amalgamated Subgroup: ", renamedGroup, " has order: ", order, "\n");
+od;
 
 
