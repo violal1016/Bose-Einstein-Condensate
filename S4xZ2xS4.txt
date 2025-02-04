@@ -10,6 +10,7 @@ ccs_g1:=ConjugacyClassesSubgroups(g1);
 names_ccs_g1:=["Z1","Z2","D1z","D1","Z2m","Z1p","Z3","V4","D2z","Z4","D2","D1p","D2d","V4m","Z2p","Z4d","D3","D3z","Z3p","V4p","D4z","D4d","Z4p","D4","D2p","D4hd","D3p","A4","D4p","A4p","S4","S4m","S4p"];
 ListA(ccs_g1,names_ccs_g1,SetAbbrv);
 
+
 # generate group S4xZ2Xs4
 # also find all conjugacy classes subgroups of S4 and rename them 
 g2:=SymmetricGroup(4);
@@ -26,6 +27,13 @@ ListA(ccs_G,names_ccs_G,SetAbbrv);
 
 # find order of all conjugacy classes of S4xZ2xS4 in GAP
 ord:=ConjugacyClasses(G);
+
+# Create Charactertable of S4xZ2
+tb:=CharacterTable(g1);
+Display(tb);
+
+# Find basic degree to the corresponding irreducible representations
+basicdegree7:=BasicDegre(Irr(g1)[7]);
 
 # Create Charactertable of S4xZ2xS4
 tbl:=CharacterTable(G);
